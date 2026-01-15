@@ -69,18 +69,18 @@ export default function LeadsPage() {
   });
 
   return (
-    <div className="flex-1 space-y-6 p-8 animate-in fade-in duration-500">
+    <div className="flex-1 space-y-6 p-4 md:p-8 pt-6 md:pt-12 animate-in fade-in duration-500">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="space-y-1">
-          <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <div className="space-y-1 min-w-0 flex-1">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
             Leads
           </h1>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-sm md:text-base">
             Manage and track customer leads
           </p>
         </div>
-        <Button size="lg" className="shadow-lg">
+        <Button size="lg" className="shadow-lg w-full lg:w-auto shrink-0">
           <Plus className="mr-2 h-4 w-4" />
           Add Lead
         </Button>

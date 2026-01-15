@@ -131,7 +131,7 @@ export default function InvoicesPage() {
   ];
 
   return (
-    <div className="p-6">
+    <div className="p-6 mt-2 md:mt-8">
       <PageHeader 
         title="Invoices" 
         action={{ 

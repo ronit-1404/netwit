@@ -6,12 +6,12 @@ import { FileText, BarChart3, TrendingUp, DollarSign } from 'lucide-react';
 
 export default function ReportsPage() {
   return (
-    <div className="p-6">
+    <div className="p-4 md:p-6 pt-6 md:pt-12">
       <div className="space-y-2 mb-6">
-        <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
           Reports
         </h1>
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm md:text-base">
           View detailed business reports and analytics
         </p>
       </div>

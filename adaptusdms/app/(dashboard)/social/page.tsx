@@ -7,17 +7,17 @@ import { Share2, Facebook, Instagram, Twitter, Plus } from 'lucide-react';
 
 export default function SocialPostingPage() {
   return (
-    <div className="p-6">
-      <div className="flex items-center justify-between mb-6">
-        <div className="space-y-1">
-          <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+    <div className="p-4 md:p-6 pt-6 md:pt-12">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
+        <div className="space-y-1 min-w-0 flex-1">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
             Social Posting
           </h1>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-sm md:text-base">
             Manage social media posts and campaigns
           </p>
         </div>
-        <Button>
+        <Button className="w-full lg:w-auto shrink-0">
           <Plus className="w-4 h-4 mr-2" />
           Create Post
         </Button>
