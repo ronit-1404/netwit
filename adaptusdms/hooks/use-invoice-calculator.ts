@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { TAX_RATES, InvoiceCalculation } from '@/lib/validations/invoice';
+import { calculateInvoiceTotal, Province, PROVINCE_TAX_RATES } from '@/lib/calculators/tax-engine';
 
 interface LineItem {
   description: string;
@@ -7,46 +7,48 @@ interface LineItem {
   unit_price: number;
 }
 
+export interface InvoiceCalculation {
+  subtotal: number;
+  gst: number;
+  pst: number;
+  hst: number;
+  taxAmount: number;
+  grandTotal: number;
+  taxBreakdown?: string;
+}
+
 export function useInvoiceCalculator() {
   const [basePrice, setBasePrice] = useState<number>(0);
   const [packageFee, setPackageFee] = useState<number>(0);
   const [discount, setDiscount] = useState<number>(0);
   const [lineItems, setLineItems] = useState<LineItem[]>([]);
-  const [taxMode, setTaxMode] = useState<'gst+pst' | 'hst'>('gst+pst');
+  const [province, setProvince] = useState<Province>('ON');
 
   const calculateTotal = useMemo((): InvoiceCalculation => {
-    // Calculate subtotal from base price, package fee, and line items
-    const lineItemsTotal = lineItems.reduce(
-      (sum, item) => sum + (item.quantity * item.unit_price),
-      0
-    );
+    // Convert line items to the format expected by calculateInvoiceTotal
+    const formattedLineItems = lineItems.map(item => ({
+      quantity: item.quantity,
+      unitPrice: item.unit_price,
+    }));
     
-    const subtotal = basePrice + packageFee + lineItemsTotal - discount;
-    
-    // Calculate taxes based on mode
-    let gst = 0;
-    let pst = 0;
-    let taxAmount = 0;
-    
-    if (taxMode === 'gst+pst') {
-      gst = subtotal * TAX_RATES.gst;
-      pst = subtotal * TAX_RATES.pst;
-      taxAmount = gst + pst;
-    } else {
-      // HST mode
-      taxAmount = subtotal * TAX_RATES.hst;
-    }
-    
-    const grandTotal = subtotal + taxAmount;
+    // Use the enhanced tax engine
+    const result = calculateInvoiceTotal({
+      baseAmount: basePrice + packageFee,
+      lineItems: formattedLineItems,
+      discount,
+      province,
+    });
     
     return {
-      subtotal: Math.round(subtotal * 100) / 100,
-      gst: Math.round(gst * 100) / 100,
-      pst: Math.round(pst * 100) / 100,
-      taxAmount: Math.round(taxAmount * 100) / 100,
-      grandTotal: Math.round(grandTotal * 100) / 100,
+      subtotal: result.subtotal,
+      gst: result.gst,
+      pst: result.pst,
+      hst: result.hst,
+      taxAmount: result.taxAmount,
+      grandTotal: result.grandTotal,
+      taxBreakdown: result.taxBreakdown,
     };
-  }, [basePrice, packageFee, discount, lineItems, taxMode]);
+  }, [basePrice, packageFee, discount, lineItems, province]);
 
   const addLineItem = () => {
     setLineItems([...lineItems, { description: '', quantity: 1, unit_price: 0 }]);
@@ -73,8 +75,13 @@ export function useInvoiceCalculator() {
     addLineItem,
     updateLineItem,
     removeLineItem,
-    taxMode,
-    setTaxMode,
+    province,
+    setProvince,
+    provinceOptions: Object.entries(PROVINCE_TAX_RATES).map(([code, data]) => ({
+      value: code as Province,
+      label: data.name,
+      rate: data.total,
+    })),
     calculation: calculateTotal,
   };
 }

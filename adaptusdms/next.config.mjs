@@ -13,11 +13,27 @@ const nextConfig = {
         pathname: '/storage/v1/object/public/**',
       },
     ],
+    formats: ['image/avif', 'image/webp'],
   },
   // Optimize production builds
   swcMinify: true,
   // Enable React strict mode
   reactStrictMode: true,
+  // Compiler optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  // Performance optimizations
+  experimental: {
+    optimizeCss: true,
+    scrollRestoration: true,
+  },
+  // Reduce bundle size
+  modularizeImports: {
+    'lucide-react': {
+      transform: 'lucide-react/dist/esm/icons/{{kebabCase member}}',
+    },
+  },
 };
 
 export default nextConfig;

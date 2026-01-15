@@ -57,19 +57,18 @@ export function Sidebar() {
   return (
     <div
       className={cn(
-        "flex h-full flex-col bg-gradient-to-b from-card via-card to-card/95 border-r border-border/50 shadow-elevated transition-all-smooth relative",
+        "flex h-full flex-col bg-card border-r border-border/50 transition-all duration-300 relative",
         isCollapsed ? "w-20" : "w-64"
       )}
     >
       {/* Logo/Branding */}
-      <div className="flex h-16 items-center justify-between border-b border-border/50 px-4 bg-gradient-to-r from-primary/10 via-secondary/10 to-transparent relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 opacity-50" />
-        <div className="flex items-center gap-2 relative z-10">
+      <div className="flex h-16 items-center justify-between border-b border-border/50 px-4 bg-primary/5">
+        <div className="flex items-center gap-2">
           <Logo />
           {!isCollapsed && (
             <div className="flex flex-col">
-              <span className="text-sm font-bold gradient-text">Adaptus</span>
-              <span className="text-xs text-muted-foreground">DMS</span>
+              <span className="text-sm font-bold text-foreground">Adaptus</span>
+              <span className="text-xs text-foreground/60">DMS</span>
             </div>
           )}
         </div>
@@ -80,9 +79,9 @@ export function Sidebar() {
         onClick={() => setIsCollapsed(!isCollapsed)}
         className={cn(
           "absolute -right-3 top-20 z-50 flex h-6 w-6 items-center justify-center rounded-full",
-          "bg-gradient-primary text-primary-foreground shadow-glow",
-          "hover:scale-110 transition-all-smooth hover:shadow-glow",
-          "border border-primary-foreground/20"
+          "bg-primary text-white shadow-md",
+          "hover:scale-110 transition-transform duration-200",
+          "border border-primary/20"
         )}
         aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
       >
@@ -98,7 +97,7 @@ export function Sidebar() {
         {navigationSections.map((section, sectionIdx) => (
           <div key={section.title} className="space-y-1">
             {!isCollapsed && (
-              <h3 className="px-3 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+              <h3 className="px-3 text-xs font-semibold text-foreground/70 uppercase tracking-wider mb-2">
                 {section.title}
               </h3>
             )}
@@ -111,37 +110,27 @@ export function Sidebar() {
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all-smooth relative group overflow-hidden",
+                    "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-200 relative group",
                     isCollapsed ? "justify-center" : "",
                     isActive
-                      ? "bg-gradient-primary text-primary-foreground shadow-md shadow-primary/20"
-                      : "text-muted-foreground hover:bg-accent/10 hover:text-accent-foreground"
+                      ? "bg-primary text-white shadow-md"
+                      : "text-foreground hover:bg-accent hover:text-foreground"
                   )}
                   title={isCollapsed ? item.name : undefined}
                 >
-                  {/* Hover gradient effect */}
-                  {!isActive && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  )}
-
                   {/* Active indicator */}
                   {isActive && (
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary-foreground rounded-r-full animate-in slide-in-from-left" />
+                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-white rounded-r-full" />
                   )}
 
                   <Icon
                     className={cn(
                       "h-5 w-5 transition-transform duration-200 relative z-10",
-                      isActive ? "scale-110" : "group-hover:scale-110"
+                      isActive ? "scale-110 text-white" : "group-hover:scale-105"
                     )}
                   />
                   {!isCollapsed && (
                     <span className="relative z-10 truncate">{item.name}</span>
-                  )}
-
-                  {/* Glow effect on hover */}
-                  {isActive && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 blur-xl opacity-50" />
                   )}
                 </Link>
               );
@@ -153,23 +142,23 @@ export function Sidebar() {
       {/* User Profile Section */}
       <div
         className={cn(
-          "border-t border-border/50 p-4 bg-gradient-to-t from-primary/5 to-transparent",
+          "border-t border-border/50 p-4 bg-muted/20",
           isCollapsed && "px-2"
         )}
       >
         <div
           className={cn(
-            "flex items-center gap-3 rounded-lg p-2 hover:bg-accent/10 transition-all-smooth cursor-pointer group",
+            "flex items-center gap-3 rounded-lg p-2 hover:bg-accent transition-colors duration-200 cursor-pointer",
             isCollapsed && "justify-center"
           )}
         >
-          <div className="h-8 w-8 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground font-semibold text-sm shadow-glow">
+          <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-white font-semibold text-sm">
             AD
           </div>
           {!isCollapsed && (
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium truncate">Admin User</p>
-              <p className="text-xs text-muted-foreground truncate">
+              <p className="text-sm font-medium truncate text-foreground">Admin User</p>
+              <p className="text-xs text-foreground/60 truncate">
                 admin@adaptus.com
               </p>
             </div>
