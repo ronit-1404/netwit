@@ -1,0 +1,61 @@
+# Dependencies
+adaptusdms/node_modules
+adaptusdms/.pnp
+adaptusdms/.pnp.js
+adaptusdms/.yarn/install-state.gz
+
+# Testing
+adaptusdms/coverage
+adaptusdms/test-results
+adaptusdms/playwright-report
+adaptusdms/playwright/.cache
+
+# Next.js
+adaptusdms/.next/
+adaptusdms/out/
+
+# Production
+adaptusdms/build
+adaptusdms/dist
+
+# Environment variables
+adaptusdms/.env
+adaptusdms/.env*.local
+adaptusdms/.env.local
+adaptusdms/.env.development.local
+adaptusdms/.env.test.local
+adaptusdms/.env.production.local
+
+# Debug
+adaptusdms/npm-debug.log*
+adaptusdms/yarn-debug.log*
+adaptusdms/yarn-error.log*
+adaptusdms/.pnpm-debug.log*
+
+# Vercel
+adaptusdms/.vercel
+
+# TypeScript
+adaptusdms/*.tsbuildinfo
+adaptusdms/next-env.d.ts
+
+# OS Files
+.DS_Store
+*.swp
+*.swo
+*~
+Thumbs.db
+**/*_Zone.Identifier
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# Misc
+*.log
+.cache
+.temp
+.tmp
