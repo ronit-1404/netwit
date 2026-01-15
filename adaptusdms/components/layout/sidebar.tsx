@@ -57,7 +57,7 @@ export function Sidebar() {
   return (
     <div
       className={cn(
-        "flex h-full flex-col bg-card border-r border-border/50 transition-all duration-300 relative",
+        "flex h-full flex-col bg-card border-r border-border/50 relative",
         isCollapsed ? "w-20" : "w-64"
       )}
     >
@@ -80,7 +80,7 @@ export function Sidebar() {
         className={cn(
           "absolute -right-3 top-20 z-50 flex h-6 w-6 items-center justify-center rounded-full",
           "bg-primary text-white shadow-md",
-          "hover:scale-110 transition-transform duration-200",
+          "hover:scale-110",
           "border border-primary/20"
         )}
         aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
@@ -110,7 +110,7 @@ export function Sidebar() {
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-200 relative group",
+                    "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium relative group",
                     isCollapsed ? "justify-center" : "",
                     isActive
                       ? "bg-primary text-white shadow-md"
@@ -125,7 +125,7 @@ export function Sidebar() {
 
                   <Icon
                     className={cn(
-                      "h-5 w-5 transition-transform duration-200 relative z-10",
+                      "h-5 w-5 relative z-10",
                       isActive ? "scale-110 text-white" : "group-hover:scale-105"
                     )}
                   />
@@ -148,7 +148,7 @@ export function Sidebar() {
       >
         <div
           className={cn(
-            "flex items-center gap-3 rounded-lg p-2 hover:bg-accent transition-colors duration-200 cursor-pointer",
+            "flex items-center gap-3 rounded-lg p-2 hover:bg-accent cursor-pointer",
             isCollapsed && "justify-center"
           )}
         >
