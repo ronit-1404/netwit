@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -56,6 +57,7 @@ const sourceData = [
 ];
 
 export default function LeadsPage() {
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
   const [sourceFilter, setSourceFilter] = useState("");
@@ -242,7 +244,7 @@ export default function LeadsPage() {
                       <p className="text-sm text-muted-foreground">{lead.notes}</p>
                     )}
                     <p className="text-xs text-muted-foreground">
-                      Created: {new Date(lead.lead_creation_date).toLocaleDateString()}
+                      Created: {new Date(lead.lead_creation_date).toLocaleDateString('en-US')}
                     </p>
                   </div>
                   <Button variant="outline" size="sm">

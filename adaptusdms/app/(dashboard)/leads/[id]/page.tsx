@@ -124,7 +124,7 @@ export default function LeadDetailPage() {
                 <div>
                   <p className="text-sm text-slate-500">Created</p>
                   <p className="font-medium">
-                    {new Date(lead.created_at).toLocaleDateString()}
+                    {new Date(lead.created_at).toLocaleDateString('en-US')}
                   </p>
                 </div>
               </div>

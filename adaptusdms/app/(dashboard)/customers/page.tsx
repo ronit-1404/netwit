@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -67,6 +68,7 @@ const mockCustomers: Customer[] = [
 ];
 
 export default function CustomersPage() {
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [customers] = useState<Customer[]>(mockCustomers);
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
@@ -183,7 +185,11 @@ export default function CustomersPage() {
                       </div>
                     </TableCell>
                     <TableCell>
-                      <Button variant="outline" size="sm">
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => router.push(`/customers/${customer.id}`)}
+                      >
                         View
                       </Button>
                       {customer.duplicate_name || customer.duplicate_phone ? (

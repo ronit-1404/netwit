@@ -66,7 +66,7 @@ export default function InvoicesPage() {
       accessorKey: 'invoice_date',
       header: 'Date',
       cell: ({ row }) => 
-        new Date(row.original.invoice_date).toLocaleDateString()
+        new Date(row.original.invoice_date).toLocaleDateString('en-US')
     },
     {
       accessorKey: 'total',
