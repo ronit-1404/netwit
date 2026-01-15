@@ -26,7 +26,7 @@ export function BusinessProfileForm({ initialData, onSubmit }: {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <div onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <div className="grid grid-cols-2 gap-6">
           <FormField
             control={form.control}
@@ -172,7 +172,7 @@ export function BusinessProfileForm({ initialData, onSubmit }: {
         <div className="flex justify-end">
           <Button type="submit">Save Business Profile</Button>
         </div>
-      </form>
+      </div>
     </Form>
   );
 }

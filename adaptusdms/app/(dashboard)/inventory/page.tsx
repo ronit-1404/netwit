@@ -248,14 +248,14 @@ export default function InventoryPage() {
             <CardTitle className="text-sm font-medium">Inventory Status</CardTitle>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={150}>
+            <ResponsiveContainer width="100%" height={200}>
               <PieChart>
                 <Pie
                   data={statusData}
                   cx="50%"
-                  cy="50%"
-                  innerRadius={40}
-                  outerRadius={60}
+                  cy="40%"
+                  innerRadius={35}
+                  outerRadius={55}
                   paddingAngle={5}
                   dataKey="value"
                 >
@@ -264,7 +264,14 @@ export default function InventoryPage() {
                   ))}
                 </Pie>
                 <Tooltip />
-                <Legend />
+                <Legend 
+                  layout="horizontal"
+                  verticalAlign="bottom"
+                  align="center"
+                  wrapperStyle={{ paddingTop: '15px', fontSize: '12px' }}
+                  iconType="circle"
+                  iconSize={8}
+                />
               </PieChart>
             </ResponsiveContainer>
           </CardContent>

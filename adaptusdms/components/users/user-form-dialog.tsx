@@ -45,7 +45,7 @@ export function UserFormDialog({
         </DialogHeader>
         
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+          <div onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
             <div className="grid grid-cols-2 gap-6">
               <FormField
                 control={form.control}
@@ -169,7 +169,7 @@ export function UserFormDialog({
                 {user ? 'Update User' : 'Add User'}
               </Button>
             </div>
-          </form>
+          </div>
         </Form>
       </DialogContent>
     </Dialog>

@@ -25,7 +25,7 @@ export function PersonalProfileForm({ initialData, onSubmit }: {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <div onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <div className="flex items-center gap-6 mb-6">
           <Avatar className="w-24 h-24">
             <AvatarImage src={form.watch('avatar')} />
@@ -134,7 +134,7 @@ export function PersonalProfileForm({ initialData, onSubmit }: {
         <div className="flex justify-end">
           <Button type="submit">Save Personal Profile</Button>
         </div>
-      </form>
+      </div>
     </Form>
   );
 }
