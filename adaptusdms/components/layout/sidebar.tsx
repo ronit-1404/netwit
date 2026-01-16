@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
 import {
@@ -21,7 +21,19 @@ import {
   FlaskConical,
   Menu,
   X,
+  LogIn,
+  UserPlus,
+  LogOut,
+  ChevronDown,
 } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { getCurrentUser, signOut } from "@/lib/actions/auth";
+import { toast } from "react-hot-toast";
 
 const navigationSections = [
   {
@@ -54,8 +66,32 @@ const navigationSections = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [user, setUser] = useState<{ id: string; email?: string; fullName: string; avatar?: string } | null>(null);
+
+  useEffect(() => {
+    getCurrentUser().then(setUser);
+  }, []);
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      toast.success("Signed out successfully");
+    } catch (error) {
+      toast.error("Failed to sign out");
+    }
+  };
+
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(n => n[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
 
   return (
     <>
@@ -184,24 +220,77 @@ export function Sidebar() {
           isCollapsed && "px-2"
         )}
       >
-        <div
-          className={cn(
-            "flex items-center gap-3 rounded-lg p-2 hover:bg-accent cursor-pointer",
-            isCollapsed && "justify-center"
-          )}
-        >
-          <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-white font-semibold text-sm">
-            AD
-          </div>
-          {!isCollapsed && (
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium truncate text-foreground">Admin User</p>
-              <p className="text-xs text-foreground/60 truncate">
-                admin@adaptus.com
-              </p>
-            </div>
-          )}
-        </div>
+        {user ? (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                className={cn(
+                  "flex items-center gap-3 rounded-lg p-2 hover:bg-accent cursor-pointer w-full",
+                  isCollapsed && "justify-center"
+                )}
+              >
+                <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
+                  {getInitials(user.fullName)}
+                </div>
+                {!isCollapsed && (
+                  <>
+                    <div className="flex-1 min-w-0 text-left">
+                      <p className="text-sm font-medium truncate text-foreground">
+                        {user.fullName}
+                      </p>
+                      <p className="text-xs text-foreground/60 truncate">
+                        {user.email}
+                      </p>
+                    </div>
+                    <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                  </>
+                )}
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuItem onClick={handleSignOut}>
+                <LogOut className="mr-2 h-4 w-4" />
+                Sign Out
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        ) : (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                className={cn(
+                  "flex items-center gap-3 rounded-lg p-2 hover:bg-accent cursor-pointer w-full",
+                  isCollapsed && "justify-center"
+                )}
+              >
+                <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground font-semibold text-sm flex-shrink-0">
+                  ?
+                </div>
+                {!isCollapsed && (
+                  <>
+                    <div className="flex-1 min-w-0 text-left">
+                      <p className="text-sm font-medium truncate text-foreground">Guest User</p>
+                      <p className="text-xs text-foreground/60 truncate">
+                        Not signed in
+                      </p>
+                    </div>
+                    <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                  </>
+                )}
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuItem onClick={() => router.push('/login')}>
+                <LogIn className="mr-2 h-4 w-4" />
+                Sign In
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => router.push('/signup')}>
+                <UserPlus className="mr-2 h-4 w-4" />
+                Sign Up
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
       </div>
     </div>
     </>
