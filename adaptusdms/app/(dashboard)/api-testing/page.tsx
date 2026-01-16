@@ -17,7 +17,7 @@ export default function ApiTestingPage() {
     const stats = getEndpointStats();
 
     return (
-        <div className="flex-1 space-y-8 p-8 animate-in fade-in slide-in-from-bottom">
+        <div className="flex-1 space-y-8 p-8">
             {/* Dramatic Header with Gradient Background */}
             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary/90 to-secondary p-8 shadow-elevated-lg">
                 {/* Animated background pattern */}
@@ -27,7 +27,7 @@ export default function ApiTestingPage() {
                 </div>
 
                 <div className="relative z-10 flex items-start gap-6">
-                    <div className="h-20 w-20 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center shadow-glow border border-white/20 animate-in bounce-in">
+                    <div className="h-20 w-20 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center shadow-glow border border-white/20">
                         <FlaskConical className="h-10 w-10 text-white" />
                     </div>
                     <div className="flex-1">
@@ -35,7 +35,7 @@ export default function ApiTestingPage() {
                             <h1 className="text-5xl font-bold text-white tracking-tight">
                                 API Testing Dashboard
                             </h1>
-                            <Badge className="bg-white/20 text-white border-white/30 backdrop-blur-sm animate-in scale-in">
+                            <Badge className="bg-white/20 text-white border-white/30 backdrop-blur-sm">
                                 <Sparkles className="h-3 w-3 mr-1" />
                                 Live
                             </Badge>
@@ -115,7 +115,7 @@ export default function ApiTestingPage() {
                         </div>
                         <div className="grid grid-cols-1 gap-6">
                             {API_ENDPOINTS.map((endpoint, index) => (
-                                <div key={endpoint.id} className="animate-in fade-in slide-in-from-bottom" style={{ animationDelay: `${index * 50}ms` }}>
+                                <div key={endpoint.id}>
                                     <ApiTester endpoint={endpoint} />
                                 </div>
                             ))}
@@ -137,7 +137,7 @@ export default function ApiTestingPage() {
                         </div>
                         <div className="grid grid-cols-1 gap-6">
                             {serverActions.map((endpoint, index) => (
-                                <div key={endpoint.id} className="animate-in fade-in slide-in-from-left" style={{ animationDelay: `${index * 50}ms` }}>
+                                <div key={endpoint.id}>
                                     <ApiTester endpoint={endpoint} />
                                 </div>
                             ))}
@@ -159,7 +159,7 @@ export default function ApiTestingPage() {
                         </div>
                         <div className="grid grid-cols-1 gap-6">
                             {apiRoutes.map((endpoint, index) => (
-                                <div key={endpoint.id} className="animate-in fade-in slide-in-from-right" style={{ animationDelay: `${index * 50}ms` }}>
+                                <div key={endpoint.id}>
                                     <ApiTester endpoint={endpoint} />
                                 </div>
                             ))}
@@ -168,7 +168,7 @@ export default function ApiTestingPage() {
                 </TabsContent>
 
                 {/* Documentation */}
-                <TabsContent value="docs" className="space-y-6 animate-in fade-in">
+                <TabsContent value="docs" className="space-y-6">
                     <EndpointDocs endpoints={API_ENDPOINTS} />
                 </TabsContent>
             </Tabs>

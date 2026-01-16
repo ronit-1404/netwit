@@ -90,7 +90,7 @@ export default function CustomersPage() {
   });
 
   return (
-    <div className="flex-1 space-y-6 p-4 md:p-8 pt-6 md:pt-12 animate-in fade-in duration-500">
+    <div className="flex-1 space-y-6 p-4 md:p-8 pt-6 md:pt-12">
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div className="space-y-1 min-w-0 flex-1">

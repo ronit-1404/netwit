@@ -88,7 +88,7 @@ export default function InventoryPage() {
   };
 
   return (
-    <div className="flex-1 space-y-6 p-4 md:p-8 animate-in fade-in duration-500">
+    <div className="flex-1 space-y-6 p-4 md:p-8">
       {/* Enhanced Header with gradient */}
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-secondary/10 to-transparent p-6 md:p-8 border border-border/50 shadow-xl">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,92,246,0.15),transparent)]" />
@@ -119,7 +119,7 @@ export default function InventoryPage() {
 
       {/* Stats Grid - Enhanced & Responsive */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-        <Card className="hover-lift border-gradient animate-in slide-up">
+        <Card className="hover-lift border-gradient">
           <CardContent className="p-6">
             <div className="flex items-center gap-4">
               <div className="h-12 w-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
@@ -133,7 +133,7 @@ export default function InventoryPage() {
           </CardContent>
         </Card>
 
-        <Card className="hover-lift border-gradient animate-in slide-up" style={{ animationDelay: '100ms' }}>
+        <Card className="hover-lift border-gradient">
           <CardContent className="p-6">
             <div className="flex items-center gap-4">
               <div className="h-12 w-12 rounded-xl bg-green-500/10 flex items-center justify-center">
@@ -147,7 +147,7 @@ export default function InventoryPage() {
           </CardContent>
         </Card>
 
-        <Card className="hover-lift border-gradient animate-in slide-up" style={{ animationDelay: '200ms' }}>
+        <Card className="hover-lift border-gradient">
           <CardContent className="p-6">
             <div className="flex items-center gap-4">
               <div className="h-12 w-12 rounded-xl bg-purple-500/10 flex items-center justify-center">
@@ -161,7 +161,7 @@ export default function InventoryPage() {
           </CardContent>
         </Card>
 
-        <Card className="hover-lift border-gradient animate-in slide-up" style={{ animationDelay: '300ms' }}>
+        <Card className="hover-lift border-gradient">
           <CardContent className="p-6">
             <div className="flex items-center gap-4">
               <div className="h-12 w-12 rounded-xl bg-orange-500/10 flex items-center justify-center">
@@ -193,7 +193,7 @@ export default function InventoryPage() {
 
       {/* Stats Cards */}
       <div className="grid gap-6 md:grid-cols-4">
-        <Card className="border-l-4 border-l-blue-500 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 animate-in slide-in-from-bottom delay-100">
+        <Card className="border-l-4 border-l-blue-500 hover:shadow-lg hover:shadow-blue-500/10">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Inventory
@@ -208,7 +208,7 @@ export default function InventoryPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-l-4 border-l-green-500 hover:shadow-lg hover:shadow-green-500/10 transition-all duration-300 animate-in slide-in-from-bottom delay-200">
+        <Card className="border-l-4 border-l-green-500 hover:shadow-lg hover:shadow-green-500/10">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Purchase Value
@@ -225,7 +225,7 @@ export default function InventoryPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-l-4 border-l-purple-500 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300 animate-in slide-in-from-bottom delay-300">
+        <Card className="border-l-4 border-l-purple-500 hover:shadow-lg hover:shadow-purple-500/10">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Retail Value

@@ -71,7 +71,7 @@ export default function LeadsPage() {
   });
 
   return (
-    <div className="flex-1 space-y-6 p-4 md:p-8 pt-6 md:pt-12 animate-in fade-in duration-500">
+    <div className="flex-1 space-y-6 p-4 md:p-8 pt-6 md:pt-12">
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div className="space-y-1 min-w-0 flex-1">
@@ -90,7 +90,7 @@ export default function LeadsPage() {
 
       {/* Stats Cards */}
       <div className="grid gap-4 md:grid-cols-5">
-        <Card className="border-l-4 border-l-gray-500 hover:shadow-lg transition-all duration-300 animate-in slide-in-from-bottom delay-100">
+        <Card className="border-l-4 border-l-gray-500 hover:shadow-lg">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">Not Started</CardTitle>
           </CardHeader>
@@ -100,7 +100,7 @@ export default function LeadsPage() {
             </div>
           </CardContent>
         </Card>
-        <Card className="border-l-4 border-l-blue-500 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 animate-in slide-in-from-bottom delay-200">
+        <Card className="border-l-4 border-l-blue-500 hover:shadow-lg hover:shadow-blue-500/10">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">In Progress</CardTitle>
           </CardHeader>
@@ -110,7 +110,7 @@ export default function LeadsPage() {
             </div>
           </CardContent>
         </Card>
-        <Card className="border-l-4 border-l-green-500 hover:shadow-lg hover:shadow-green-500/10 transition-all duration-300 animate-in slide-in-from-bottom delay-300">
+        <Card className="border-l-4 border-l-green-500 hover:shadow-lg hover:shadow-green-500/10">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">Qualified</CardTitle>
           </CardHeader>
@@ -120,7 +120,7 @@ export default function LeadsPage() {
             </div>
           </CardContent>
         </Card>
-        <Card className="border-l-4 border-l-purple-500 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300 animate-in slide-in-from-bottom delay-400">
+        <Card className="border-l-4 border-l-purple-500 hover:shadow-lg hover:shadow-purple-500/10">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">Closed</CardTitle>
           </CardHeader>
@@ -130,7 +130,7 @@ export default function LeadsPage() {
             </div>
           </CardContent>
         </Card>
-        <Card className="border-l-4 border-l-red-500 hover:shadow-lg hover:shadow-red-500/10 transition-all duration-300 animate-in slide-in-from-bottom delay-500">
+        <Card className="border-l-4 border-l-red-500 hover:shadow-lg hover:shadow-red-500/10">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">Lost</CardTitle>
           </CardHeader>

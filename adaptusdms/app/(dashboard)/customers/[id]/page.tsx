@@ -38,7 +38,7 @@ export default function CustomerDetailPage() {
   const hasDuplicates = customer.duplicate_name || customer.duplicate_phone;
 
   return (
-    <div className="flex-1 space-y-6 p-4 md:p-8 pt-6 md:pt-12 animate-in fade-in duration-500">
+    <div className="flex-1 space-y-6 p-4 md:p-8 pt-6 md:pt-12">
       {/* Header with Back Button */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div className="flex items-center gap-4">
