@@ -357,7 +357,9 @@ export default function InventoryPage() {
                 return (
                   <TableRow key={vehicle.id}>
                     <TableCell>
-                      <div className="h-16 w-24 rounded bg-muted"></div>
+                      <div className="h-16 w-24 rounded bg-muted flex items-center justify-center overflow-hidden">
+                        <Car className="h-8 w-8 text-muted-foreground/50" />
+                      </div>
                     </TableCell>
                     <TableCell className="font-medium">{vehicle.stockNumber}</TableCell>
                     <TableCell className="font-mono text-xs">{vehicle.vin}</TableCell>
