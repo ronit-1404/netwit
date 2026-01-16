@@ -25,7 +25,6 @@ const nextConfig = {
   },
   // Performance optimizations
   experimental: {
-    optimizeCss: true,
     scrollRestoration: false, // Disable to prevent scroll lag
   },
   // Reduce bundle size
