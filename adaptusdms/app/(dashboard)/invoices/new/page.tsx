@@ -271,7 +271,7 @@ export default function NewInvoicePage() {
                       placeholder="0.00"
                     />
                   </div>
-
+                </CardContent>
               </Card>
 
               <Card>
