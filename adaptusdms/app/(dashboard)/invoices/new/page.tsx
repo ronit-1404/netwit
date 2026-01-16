@@ -272,18 +272,6 @@ export default function NewInvoicePage() {
                     />
                   </div>
 
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Tax Mode</label>
-                    <select
-                      className="w-full p-2 border rounded-md"
-                      value={calculator.taxMode}
-                      onChange={(e) => calculator.setTaxMode(e.target.value as 'gst+pst' | 'hst')}
-                    >
-                      <option value="gst+pst">GST + PST (5% + 7%)</option>
-                      <option value="hst">HST (13%)</option>
-                    </select>
-                  </div>
-                </CardContent>
               </Card>
 
               <Card>
