@@ -79,7 +79,7 @@ ON mv_dashboard_stats(last_updated);
 CREATE OR REPLACE FUNCTION refresh_dashboard_stats()
 RETURNS void AS $$
 BEGIN
-  REFRESH MATERIALIZED VIEW CONCURRENTLY mv_dashboard_stats;
+  REFRESH MATERIALIZED VIEW mv_dashboard_stats;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -100,15 +100,15 @@ CREATE OR REPLACE FUNCTION search_inventory(
 )
 RETURNS TABLE (
   id UUID,
-  vin VARCHAR,
+  vin TEXT,
   year INTEGER,
-  make VARCHAR,
-  model VARCHAR,
-  trim VARCHAR,
+  make TEXT,
+  model TEXT,
+  "trim" TEXT,
   odometer INTEGER,
-  stock_number VARCHAR,
-  condition VARCHAR,
-  status VARCHAR,
+  stock_number TEXT,
+  "condition" TEXT,
+  status TEXT,
   purchase_price DECIMAL,
   retail_price DECIMAL,
   extra_costs DECIMAL,

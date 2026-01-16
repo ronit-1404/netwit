@@ -146,14 +146,10 @@ CREATE POLICY "Only admins can update user roles"
     )
   )
   WITH CHECK (
-    -- Allow admins to update any field, but only admins can change roles
-    (
-      OLD.role = NEW.role OR
-      EXISTS (
-        SELECT 1 FROM users
-        WHERE users.id = auth.uid()
-        AND users.role = 'Admin'
-      )
+    EXISTS (
+      SELECT 1 FROM users
+      WHERE users.id = auth.uid()
+      AND users.role = 'Admin'
     )
   );
 
@@ -174,10 +170,7 @@ CREATE POLICY "Users can update own profile"
   ON users FOR UPDATE
   TO authenticated
   USING (auth.uid() = id)
-  WITH CHECK (
-    auth.uid() = id AND
-    OLD.role = NEW.role  -- Cannot change own role
-  );
+  WITH CHECK (auth.uid() = id);
 
 -- ============================================================================
 -- CUSTOMERS TABLE POLICIES
